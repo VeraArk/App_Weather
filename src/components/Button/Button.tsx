@@ -7,7 +7,6 @@ function Button({
   name = "Send",
   onClick,
   disabled = false,
-  isRed = false,
 }: ButtonProps) {
   return (
     <StyledButton disabled={disabled} onClick={onClick} type={type}>
