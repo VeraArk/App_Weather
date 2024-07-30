@@ -1,21 +1,19 @@
-import { StyledButton, ButtonImg } from "./styles";
+import { StyledButton } from "./styles"
 
-import { ButtonProps } from "./types";
+import { ButtonProps } from "./types"
 
 function Button({
-  imgSrc = undefined,
   type = "button",
   name = "Send",
   onClick,
   disabled = false,
-  isRed = false
+  isRed = false,
 }: ButtonProps) {
   return (
-    <StyledButton $isRed={isRed} disabled={disabled} onClick={onClick} type={type}>
-      {imgSrc && <ButtonImg src={imgSrc} />}
-      {!imgSrc && name}
+    <StyledButton disabled={disabled} onClick={onClick} type={type}>
+      {name}
     </StyledButton>
-  );
+  )
 }
 
-export default Button;
+export default Button
