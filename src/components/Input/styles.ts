@@ -14,7 +14,7 @@ export const InputWrapper = styled.div`
 
 export const StyledInput = styled.input<StyledInputProps>`
   width: 550px;
-  height: 48;
+  height: 480px;
   border: 1px solid #FFFFFF;
   border-radius: 40px;
   padding: 12px 12px 12px 20px;
