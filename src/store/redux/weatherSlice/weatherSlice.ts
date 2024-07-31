@@ -37,20 +37,16 @@ export const weatherSlice = createAppSlice({
             temperature: `${Math.round(action.payload.data.main.temp - 272.15)}°C`,
             id: v4(),
           }
-
-          console.log("Fullfield", action)
         },
         rejected: (state: WeatherDataState, action) => {
           state.isFetching = false
           state.error = action.error.message
-          console.log("rejected", action)
+          state.weather = undefined
         },
       },
     ),
     saveCard: create.reducer((state: WeatherDataState) => {
-      //  if(action.payload) {
-      //   state.allWeather = [...state.allWeather, action.payload]
-      //  }
+    
       if (state.weather) {
         state.allWeather = [...state.allWeather, state.weather]
       }

@@ -3,6 +3,6 @@ export interface CardProps {
   city: string | undefined
   temperature: string | undefined
   imgUrl: string | undefined
-  onSave: () => void
-  onDelete: () => void
+  onSave?: () => void
+  onDelete?: () => void
 }

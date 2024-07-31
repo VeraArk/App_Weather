@@ -22,6 +22,7 @@ export const City = styled.p`
   color: #ffffff;
 `
 export const TempCityContainer = styled.div`
+  height: fit-content;
   display: flex;
   flex: 1;
   flex-direction: column;
