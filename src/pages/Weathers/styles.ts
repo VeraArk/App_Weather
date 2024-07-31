@@ -11,7 +11,7 @@ export const WheatherCardContainer = styled.div`
   display: flex;
   flex-direction: column;
   margin-top: 90px;
-  gap: 40 px;
+  gap: 40px;
 `
 export const ButtonControl = styled.div`
   width: 709px;

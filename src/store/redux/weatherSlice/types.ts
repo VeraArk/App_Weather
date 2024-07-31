@@ -1,5 +1,5 @@
 export interface WeatherData {
-  id: string | undefined
+  id: string 
   imgURL: string | undefined
   city: string | undefined
   temperature: string | undefined

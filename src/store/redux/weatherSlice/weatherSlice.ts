@@ -46,22 +46,31 @@ export const weatherSlice = createAppSlice({
       },
     ),
     saveCard: create.reducer((state: WeatherDataState) => {
-    
       if (state.weather) {
         state.allWeather = [...state.allWeather, state.weather]
       }
     }),
-    // deleteCard: create.reducer(
-    //   (state: WeatherDataState, action: PayloadAction<string>) => {
-    //     state.weather = state.weather.filter(() => {})
-    //   },
-    // ),
+    deleteCardWeather: create.reducer(
+      (state: WeatherDataState, action: PayloadAction<string>) => {
+        state.allWeather = state.allWeather.filter((weather) => {
+          return weather.id !== action.payload
+        })
+      },
+    ),
+    deleteCardHomePage: create.reducer(
+      (state: WeatherDataState)=>{
+        state.weather = undefined
+        state.error = undefined
+      },
+    ),
     deleteAllcards: create.reducer(() => weatherInitialState),
+
   }),
   selectors: {
     weatherData: (state: WeatherDataState) => state.weather,
     error: (state: WeatherDataState) => state.error,
     isFetching: (state: WeatherDataState) => state.isFetching,
+    allWeather: (state: WeatherDataState) => state.allWeather
   },
 })
 

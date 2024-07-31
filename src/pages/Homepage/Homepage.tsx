@@ -52,6 +52,10 @@ function Homepage() {
     dispatch(weatherActions.saveCard())
   }
 
+  const onDelete = () => {
+    dispatch(weatherActions.deleteCardHomePage())
+  }
+
   return (
     <HomepageWrapper>
       <StyledFormContainer onSubmit={formik.handleSubmit}>
@@ -68,8 +72,17 @@ function Homepage() {
           <Button name="Search" type="submit" isBlue />
         </ButtonControl>
       </StyledFormContainer>
-      {!!weather && <Card showSaveButton={true} city={weather?.city} temperature={weather?.temperature} imgUrl={weather?.imgURL}/>}
-      {error && <ErrorCard errorMessage={error}/>}
+      {!!weather && (
+        <Card
+          onSave={onSave}
+          onDelete={onDelete}
+          showSaveButton={true}
+          city={weather?.city}
+          temperature={weather?.temperature}
+          imgUrl={weather?.imgURL}
+        />
+      )}
+      {error && <ErrorCard onDelete={onDelete} errorMessage={error} />}
     </HomepageWrapper>
   )
 }
