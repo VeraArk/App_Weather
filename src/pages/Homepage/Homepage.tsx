@@ -3,6 +3,8 @@ import * as Yup from "yup"
 
 import Button from "components/Button/Button"
 import Input from "components/Input/Input"
+import Card from "components/Card/Card"
+
 
 import { WEATHER_FORM } from "./types"
 import { HomepageWrapper, StyledFormContainer, ButtonControl } from "./styles"
@@ -42,6 +44,9 @@ function Homepage() {
     },
   })
 
+  const weather = useAppSelector(weatherSelectors.WeatherData)
+
+
   return (
     <HomepageWrapper>
       <StyledFormContainer onSubmit={formik.handleSubmit}>
@@ -58,7 +63,7 @@ function Homepage() {
           <Button name="Search" type="submit" isBlue />
         </ButtonControl>
       </StyledFormContainer>
-      {/* <Card/> */}
+      {!!weather && <Card showSaveButton={true} city={weather?.city} temperature={weather?.temperature} imgUrl={weather?.imgURL}/>}
     </HomepageWrapper>
   )
 }

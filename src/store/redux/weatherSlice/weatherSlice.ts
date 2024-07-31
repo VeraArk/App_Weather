@@ -36,13 +36,14 @@ export const weatherSlice = createAppSlice({
         fulfilled: (state: WeatherDataState, action) => {
           state.isFetching = false
           // state.weather = [...state.weather]
-          state.weather = {city: action.payload.data.name,
-            imgURL:action.payload.data.weather[0].icon, 
-            temperature:action.payload.data.main.temp,
-          id: v4(), }
+          state.weather = {
+            city: action.payload.data.name,
+            imgURL: `http://openweathermap.org/img/w/${action.payload.data.weather[0].icon}.png`,
+            temperature: action.payload.data.main.temp,
+            id: v4(),
+          }
 
-          console.log(action)
-          
+          console.log("Fullfield", action)
         },
         rejected: (state: WeatherDataState, action) => {
           state.isFetching = false
@@ -51,11 +52,11 @@ export const weatherSlice = createAppSlice({
         },
       },
     ),
-    deleteCard: create.reducer(
-      (state: WeatherDataState, action: PayloadAction<string>) => {
-        state.weather = state.weather.filter(() => {})
-      },
-    ),
+    // deleteCard: create.reducer(
+    //   (state: WeatherDataState, action: PayloadAction<string>) => {
+    //     state.weather = state.weather.filter(() => {})
+    //   },
+    // ),
     deleteAllcards: create.reducer(() => weatherInitialState),
   }),
   selectors: {
