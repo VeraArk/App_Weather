@@ -1,5 +1,6 @@
 import styled from "@emotion/styled";
 import { NavLink, Link as SimpleLink } from "react-router-dom";
+import backgroundImage from "assets/backgroundImage.jpg"
 
 
 
@@ -12,12 +13,12 @@ export const LayoutWrapper = styled.div`
 export const Header = styled.header`
   display: flex;
   justify-content: space-between;
-  width: Fixed (1,920px) px;
-  height: Fixed (80px) px;
-  padding: 10px 0px 0px 0px;
+  align-items: center;
+  width: 100%;
+  height: 80px;
+  padding: 10px;
   gap: 10px;
   border: 0px 0px 1px 0px;
-  opacity: 0px;
   background: linear-gradient(
       0deg,
       rgba(18, 45, 77, 0.5),
@@ -30,15 +31,11 @@ export const Header = styled.header`
 export const Logo = styled.div`
     width: 155px;
   height: 29px;
-  top: 25.5px;
-  left: 85px;
-  gap: 0px;
-  opacity: 0px;
+  margin-left: 85px;
   font-family: Inter;
   font-size: 24px;
   font-weight: 700;
   line-height: 29.05px;
-  text-align: left;
   color: #ffffff;
   cursor: pointer;
 `;
@@ -46,14 +43,13 @@ export const Logo = styled.div`
 export const NavigationContainer = styled.nav`
   display: flex;
   gap: 30px;
-  height: 100%;
-  align-items: center;
+  margin-right: 85px;
 `;
 
 export const Link = styled(NavLink)`
   font-size: 20px;
   font-weight: 400;
-  line-height: 24.2 px;
+  line-height: 24.2px;
   font: Inter;
   color: #FFFFFF;
 `;
@@ -62,6 +58,9 @@ export const Main = styled.main`
   display: flex;
   flex: 1;
   padding: 40px;
+  background-image: url(${backgroundImage});
+  background-size: cover;
+  background-position: center;
 `;
 
 

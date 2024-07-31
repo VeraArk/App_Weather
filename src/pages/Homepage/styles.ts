@@ -10,9 +10,6 @@ export const HomepageWrapper = styled.div`
   flex-direction: column;
   gap: 100px;
   align-items: center;
-  background-image: url(${backgroundImage});
-  background-size: cover;
-  background-position: center;
 `
 
 export const StyledFormContainer = styled.form`
