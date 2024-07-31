@@ -5,7 +5,7 @@ export const StyledCard = styled.div`
   flex-direction: column;
   flex: 1;
   background-color: #2f486f9e;
-  opacity: 62%;
+  opacity: 100%;
   border-radius: 15px;
   padding: 28px;
   width: 709px;

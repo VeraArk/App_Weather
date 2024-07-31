@@ -57,7 +57,6 @@ export const Link = styled(NavLink)`
 export const Main = styled.main`
   display: flex;
   flex: 1;
-  padding: 40px;
   background-image: url(${backgroundImage});
   background-size: cover;
   background-position: center;

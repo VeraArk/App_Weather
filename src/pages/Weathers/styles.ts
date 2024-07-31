@@ -6,12 +6,11 @@ export const PageWrapperWheather = styled.div`
   flex-direction: column;
   align-items: center;
   gap: 40px;
-  padding: 40px;
 `
 export const WheatherCardContainer = styled.div`
   display: flex;
   flex-direction: column;
-  margin-top: 170px;
+  margin-top: 90px;
   gap: 40 px;
 `
 export const ButtonControl = styled.div`
