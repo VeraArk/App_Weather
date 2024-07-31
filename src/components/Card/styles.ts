@@ -22,6 +22,7 @@ export const City = styled.p`
   color: #ffffff;
 `
 export const TempCityContainer = styled.div`
+  height: fit-content;
   display: flex;
   flex: 1;
   flex-direction: column;
@@ -34,10 +35,13 @@ export const TempCityImgContainer = styled.div`
 
 export const ImgControl = styled.div`
   width: 290px;
-  height: 74px;
+  height: 290px;
 `
 
-export const Img = styled.img``
+export const Img = styled.img`
+width: 100%;
+height: 100%;
+`
 
 export const ButtonContainer = styled.div`
   display: flex;

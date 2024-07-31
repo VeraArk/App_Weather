@@ -8,6 +8,9 @@ export const LayoutWrapper = styled.div`
   display: flex;
   flex-direction: column;
   flex: 1;
+  background-image: url(${backgroundImage});
+  background-size: cover;
+  background-position: center;
 `;
 
 export const Header = styled.header`
@@ -57,9 +60,7 @@ export const Link = styled(NavLink)`
 export const Main = styled.main`
   display: flex;
   flex: 1;
-  background-image: url(${backgroundImage});
-  background-size: cover;
-  background-position: center;
+
 `;
 
 
