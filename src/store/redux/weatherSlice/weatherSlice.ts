@@ -5,7 +5,8 @@ import axios from "axios"
 import { v4 } from "uuid"
 
 const weatherInitialState: WeatherDataState = {
-  weather: [],
+  weather: undefined,
+  allWeather: [],
   error: undefined,
   isFetching: false,
 }
@@ -20,12 +21,12 @@ export const weatherSlice = createAppSlice({
           `https://api.openweathermap.org/data/2.5/weather?q=${payload.city}&appid=c1bd94c6a4c59ccf8f89d76db9d14b41`,
         )
         console.log("Response:", response)
-        return {
-          id: v4(),
-          city: payload.city,
-          imgUrl: `http://openweathermap.org/img/w/${response.data.weather[0].icon}.png`,
-          temperature: response.data.temperature,
-        }
+        return response
+
+        // id: v4(),
+        // city: payload.city,
+        // imgUrl: `http://openweathermap.org/img/w/${response.data.weather[0].icon}.png`,
+        // temperature: response.data.temperature,
       },
       {
         pending: (state: WeatherDataState) => {
@@ -34,7 +35,11 @@ export const weatherSlice = createAppSlice({
         },
         fulfilled: (state: WeatherDataState, action) => {
           state.isFetching = false
-          state.weather = [...state.weather]
+          // state.weather = [...state.weather]
+          const {city, imgUrl, temperature} = action.payload.data
+          state.weather = {}
+          
+          
         },
         rejected: (state: WeatherDataState, action) => {
           state.isFetching = false
