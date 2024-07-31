@@ -8,24 +8,22 @@ import { WEATHER_FORM } from "./types"
 import { HomepageWrapper, StyledFormContainer, ButtonControl } from "./styles"
 
 import { useAppDispatch, useAppSelector } from "store/hooks"
-// import {
-//   employeeDataSliceAction,
-//   employeeDataSliceSelectors,
-// } from "store/redux/employeeData/employeeDataSlice"
+import {
+  weatherActions,
+  weatherSelectors,
+} from "store/redux/weatherSlice/weatherSlice"
 import { v4 } from "uuid"
 
 function Homepage() {
-
   const dispatch = useAppDispatch()
 
-    const validationSchema = Yup.object().shape({
-      [WEATHER_FORM.CITY]: Yup.string()
-        .required("This field is required")
-    })
+  const validationSchema = Yup.object().shape({
+    [WEATHER_FORM.CITY]: Yup.string().required("This field is required"),
+  })
 
   const formik = useFormik({
     initialValues: {
-      [WEATHER_FORM.ID]: "",
+      // [WEATHER_FORM.ID]: "",
       [WEATHER_FORM.CITY]: "",
     },
     validationSchema: validationSchema,
@@ -34,14 +32,13 @@ function Homepage() {
     validateOnChange: false,
 
     onSubmit: (values, helpers) => {
-      console.log(values)
-        // dispatch(
-        //   whetherSliceAction.getCityNameValue({
-        //     ...values,
-        //     [WEATHER_FORM.ID]: v4(),
-        //   }),
-        // ),
-        //   helpers.resetForm()
+      dispatch(
+        weatherActions.getWeather({
+          city: values[WEATHER_FORM.CITY],
+          // [WEATHER_FORM.ID]: v4(),
+        }),
+      ),
+        helpers.resetForm()
     },
   })
 
@@ -58,7 +55,7 @@ function Homepage() {
           error={formik.errors[WEATHER_FORM.CITY]}
         />
         <ButtonControl>
-          <Button name="Search" type="submit" isBlue/>
+          <Button name="Search" type="submit" isBlue />
         </ButtonControl>
       </StyledFormContainer>
       {/* <Card/> */}
@@ -66,4 +63,4 @@ function Homepage() {
   )
 }
 
-export default Homepage;
+export default Homepage
