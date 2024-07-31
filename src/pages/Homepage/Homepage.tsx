@@ -46,7 +46,7 @@ function Homepage() {
     validateOnChange: true,
     onSubmit: (values, helpers) => {
       //   dispatch(
-      //     employeeDataSliceAction.createEmployeeCard({
+      //     whetherSliceAction.createEmployeeCard({
       //       ...values,
       //       [WEATHER_FORM.ID]: v4(),
       //     }),
@@ -68,7 +68,7 @@ function Homepage() {
           error={formik.errors[WEATHER_FORM.CITY]}
         />
         <ButtonControl>
-          <Button name="Search" type="submit" />
+          <Button name="Search" type="submit" isBlue/>
         </ButtonControl>
       </StyledFormContainer>
       {/* <Card/> */}

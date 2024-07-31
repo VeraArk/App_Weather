@@ -3,6 +3,7 @@ import { colors } from "styles/colors";
 
 interface StyledButtonProps {
   $isBlue?: boolean | undefined;
+  disabled?: boolean | undefined;
 }
 
 const getButtonColor = (
@@ -18,6 +19,13 @@ const getButtonColor = (
   }
 };
 
+const getButtonBorder = (isBlue: boolean | undefined) => {
+  if (isBlue) {
+    return "none"; 
+  } else {
+    return "1px solid #ffffff"; 
+  }
+};
 
 export const StyledButton = styled("button")<StyledButtonProps>`
   width: 100%;
@@ -29,11 +37,10 @@ export const StyledButton = styled("button")<StyledButtonProps>`
   font-size: 20px;
   font-weight: 400;
   line-height: 24.2px;
-  text-align: left;
   background-color: ${({ disabled, $isBlue}) =>
     getButtonColor(disabled, $isBlue)};
   cursor: ${({ disabled }) => (disabled ? "not-allowed" : "pointer")};
   border-radius: 50px;
-  border: 1px solid #ffffff; 
+  border: ${({ $isBlue }) => getButtonBorder($isBlue)};
 `
 

@@ -1,12 +1,12 @@
 import Homepage from "./pages/Homepage/Homepage"
+import Weather from "pages/Weathers/Weather"
 import Input from "./components/Input/Input"
 
 function App() {
   return (
-    <div className="App">
-      <Input id="search-input" name="search-input" placeholder="Colorado"/>
-      <Homepage/>
-    </div>
+    <>
+      <Weather />
+    </>
   )
 }
 
