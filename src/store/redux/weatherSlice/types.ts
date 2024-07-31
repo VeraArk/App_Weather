@@ -1,18 +1,13 @@
-
-
-
 export interface WeatherData {
-    id: string;
-    imgURL: string;
-    city: string;
-    temperature: string;
+  id: string | undefined
+  imgURL: string | undefined
+  city: string | undefined
+  temperature: string | undefined
 }
 
-export interface WeatherDataState{
-    weather: WeatherData | undefined;
-    allWeather: WeatherData[];
-    error: string | undefined;
-    isFetching: boolean;
+export interface WeatherDataState {
+  weather: WeatherData | undefined
+  allWeather: WeatherData[]
+  error: string | undefined
+  isFetching: boolean
 }
-
-    

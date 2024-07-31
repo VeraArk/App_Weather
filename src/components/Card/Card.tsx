@@ -30,11 +30,11 @@ function Card(props: CardProps) {
       <ButtonContainer>
         {props.showSaveButton && (
           <ButtonControl>
-            <Button name="Save" />
+            <Button name="Save" onClick={props.onSave}/>
           </ButtonControl>
         )}
         <ButtonControl>
-          <Button name="Delete" />
+          <Button name="Delete" onClick={props.onDelete}/>
         </ButtonControl>
       </ButtonContainer>
     </StyledCard>

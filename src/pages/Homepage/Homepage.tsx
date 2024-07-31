@@ -5,7 +5,6 @@ import Button from "components/Button/Button"
 import Input from "components/Input/Input"
 import Card from "components/Card/Card"
 
-
 import { WEATHER_FORM } from "./types"
 import { HomepageWrapper, StyledFormContainer, ButtonControl } from "./styles"
 
@@ -15,6 +14,7 @@ import {
   weatherSelectors,
 } from "store/redux/weatherSlice/weatherSlice"
 import { v4 } from "uuid"
+import { WeatherData } from "store/redux/weatherSlice/types"
 
 function Homepage() {
   const dispatch = useAppDispatch()
@@ -44,7 +44,15 @@ function Homepage() {
     },
   })
 
-  const weather = useAppSelector(weatherSelectors.WeatherData)
+  
+
+  const weather: WeatherData | undefined = useAppSelector(weatherSelectors.weatherData)
+
+
+
+  const onSave = () => {
+    dispatch(weatherActions.saveCard())
+  }
 
 
   return (
@@ -63,7 +71,16 @@ function Homepage() {
           <Button name="Search" type="submit" isBlue />
         </ButtonControl>
       </StyledFormContainer>
-      {!!weather && <Card showSaveButton={true} city={weather?.city} temperature={weather?.temperature} imgUrl={weather?.imgURL}/>}
+      {!!weather && (
+        <Card
+          showSaveButton={true}
+          city={weather?.city}
+          temperature={weather?.temperature}
+          imgUrl={weather?.imgURL}
+          onSave={onSave}
+          onDelete={()=>{}}
+        />
+      )}
     </HomepageWrapper>
   )
 }

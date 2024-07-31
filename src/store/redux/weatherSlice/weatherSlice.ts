@@ -1,6 +1,6 @@
 import { createAppSlice } from "store/createAppSlice"
 import { PayloadAction } from "@reduxjs/toolkit"
-import { WeatherDataState } from "./types"
+import { WeatherDataState, WeatherData } from "./types"
 import axios from "axios"
 import { v4 } from "uuid"
 
@@ -22,11 +22,6 @@ export const weatherSlice = createAppSlice({
         )
         console.log("Response:", response)
         return response
-
-        // id: v4(),
-        // city: payload.city,
-        // imgUrl: `http://openweathermap.org/img/w/${response.data.weather[0].icon}.png`,
-        // temperature: response.data.temperature,
       },
       {
         pending: (state: WeatherDataState) => {
@@ -39,7 +34,7 @@ export const weatherSlice = createAppSlice({
           state.weather = {
             city: action.payload.data.name,
             imgURL: `http://openweathermap.org/img/w/${action.payload.data.weather[0].icon}.png`,
-            temperature: action.payload.data.main.temp,
+            temperature: `${Math.round(action.payload.data.main.temp - 272.15)}°C`,
             id: v4(),
           }
 
@@ -52,6 +47,14 @@ export const weatherSlice = createAppSlice({
         },
       },
     ),
+    saveCard: create.reducer((state: WeatherDataState) => {
+      //  if(action.payload) {
+      //   state.allWeather = [...state.allWeather, action.payload]
+      //  }
+      if (state.weather) {
+        state.allWeather = [...state.allWeather, state.weather]
+      }
+    }),
     // deleteCard: create.reducer(
     //   (state: WeatherDataState, action: PayloadAction<string>) => {
     //     state.weather = state.weather.filter(() => {})
@@ -60,7 +63,7 @@ export const weatherSlice = createAppSlice({
     deleteAllcards: create.reducer(() => weatherInitialState),
   }),
   selectors: {
-    WeatherData: (state: WeatherDataState) => state.weather,
+    weatherData: (state: WeatherDataState) => state.weather,
     error: (state: WeatherDataState) => state.error,
     isFetching: (state: WeatherDataState) => state.isFetching,
   },

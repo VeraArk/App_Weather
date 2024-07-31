@@ -34,10 +34,13 @@ export const TempCityImgContainer = styled.div`
 
 export const ImgControl = styled.div`
   width: 290px;
-  height: 74px;
+  height: 290px;
 `
 
-export const Img = styled.img``
+export const Img = styled.img`
+width: 100%;
+height: 100%;
+`
 
 export const ButtonContainer = styled.div`
   display: flex;
