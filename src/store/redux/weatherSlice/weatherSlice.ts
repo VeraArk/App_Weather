@@ -46,6 +46,7 @@ export const weatherSlice = createAppSlice({
         rejected: (state: WeatherDataState, action) => {
           state.isFetching = false
           state.error = action.error.message
+          state.weather = undefined;
         },
       },
     ),
