@@ -1,3 +1,4 @@
+
 import { Route, Routes } from "react-router-dom";
 import Home from "./components/pages/Home/Home";
 import Weathers from "./components/pages/Weathers/Weathers";
