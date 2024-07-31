@@ -7,4 +7,5 @@ export interface ButtonProps {
   name: string;
   onClick?: (event: MouseEvent) => void;
   disabled?: boolean;
+  isBlue?: boolean;
 }
