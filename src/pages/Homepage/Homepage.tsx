@@ -4,6 +4,7 @@ import * as Yup from "yup"
 import Button from "components/Button/Button"
 import Input from "components/Input/Input"
 import Card from "components/Card/Card"
+import ErrorCard from "components/ErrorCard/ErrorCard"
 
 
 import { WEATHER_FORM } from "./types"
@@ -65,7 +66,7 @@ function Homepage() {
         </ButtonControl>
       </StyledFormContainer>
       {!!weather && <Card showSaveButton={true} city={weather?.city} temperature={weather?.temperature} imgUrl={weather?.imgURL}/>}
-      {error && <Card showSaveButton={false} city={weather?.city} temperature={weather?.temperature} imgUrl={weather?.imgURL}/>}
+      {error && <ErrorCard errorMessage={error}/>}
     </HomepageWrapper>
   )
 }
