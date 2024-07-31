@@ -36,9 +36,12 @@ export const weatherSlice = createAppSlice({
         fulfilled: (state: WeatherDataState, action) => {
           state.isFetching = false
           // state.weather = [...state.weather]
-          const {city, imgUrl, temperature} = action.payload.data
-          state.weather = {}
-          
+          state.weather = {city: action.payload.data.name,
+            imgURL:action.payload.data.weather[0].icon, 
+            temperature:action.payload.data.main.temp,
+          id: v4(), }
+
+          console.log(action)
           
         },
         rejected: (state: WeatherDataState, action) => {
