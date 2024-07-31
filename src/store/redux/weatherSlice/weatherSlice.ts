@@ -39,16 +39,13 @@ export const weatherSlice = createAppSlice({
           state.weather = {
             city: action.payload.data.name,
             imgURL: `http://openweathermap.org/img/w/${action.payload.data.weather[0].icon}.png`,
-            temperature: action.payload.data.main.temp,
+            temperature: `${Math.round(action.payload.data.main.temp - 272.15 )}°C`,
             id: v4(),
           }
-
-          console.log("Fullfield", action)
         },
         rejected: (state: WeatherDataState, action) => {
           state.isFetching = false
           state.error = action.error.message
-          console.log("rejected", action)
         },
       },
     ),

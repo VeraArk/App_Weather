@@ -45,6 +45,7 @@ function Homepage() {
   })
 
   const weather = useAppSelector(weatherSelectors.WeatherData)
+  const error = useAppSelector(weatherSelectors.error)
 
 
   return (
@@ -64,6 +65,7 @@ function Homepage() {
         </ButtonControl>
       </StyledFormContainer>
       {!!weather && <Card showSaveButton={true} city={weather?.city} temperature={weather?.temperature} imgUrl={weather?.imgURL}/>}
+      {error && <Card showSaveButton={false} city={weather?.city} temperature={weather?.temperature} imgUrl={weather?.imgURL}/>}
     </HomepageWrapper>
   )
 }
