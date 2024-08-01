@@ -5,47 +5,55 @@ export const StyledCard = styled.div`
   flex-direction: column;
   flex: 1;
   background-color: #2f486f9e;
-  opacity: 62%;
+  opacity: 100%;
   border-radius: 15px;
   padding: 28px;
   width: 709px;
-  height: 220px;
+  max-height: 220px;
 `
 
-export const Temp = styled.p`
+export const Temp = styled.div`
+  display: flex;
   font-size: 57px;
   color: #ffffff;
+  /* padding: 10px; */
 `
 
-export const City = styled.p`
+export const City = styled.div`
+  display: flex;
   font-size: 20px;
   color: #ffffff;
+  /* padding: 10px; */
 `
 export const TempCityContainer = styled.div`
   display: flex;
-  flex: 1;
   flex-direction: column;
 `
 
 export const TempCityImgContainer = styled.div`
   display: flex;
-  flex: 1;
+  justify-content: space-between;
 `
 
 export const ImgControl = styled.div`
-  width: 290px;
-  height: 74px;
+  display: flex;
+  width: 200px;
+  height: 100px;
 `
 
-export const Img = styled.img``
+export const Img = styled.img`
+  height: 100%;
+`
 
 export const ButtonContainer = styled.div`
   display: flex;
   align-items: center;
   justify-content: center;
   gap: 95px;
+  padding-top: 20px;
 `
 
 export const ButtonControl = styled.div`
+  display: flex;
   width: 150px;
 `

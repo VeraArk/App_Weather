@@ -17,12 +17,12 @@ function Card(props: CardProps) {
     <StyledCard>
       <TempCityImgContainer>
         <TempCityContainer>
-          <Temp>18°</Temp>
-          <City>Frankfurt</City>
+          <Temp>{props.temperature}</Temp>
+          <City>{props.city}</City>
         </TempCityContainer>
         <ImgControl>
           <Img
-            src="https://openweathermap.org/img/w/$%7BweatherData.weather[0].icon%7D.png"
+            src={props.imgUrl}
             alt="Weather image"
           />
         </ImgControl>
@@ -30,11 +30,11 @@ function Card(props: CardProps) {
       <ButtonContainer>
         {props.showSaveButton && (
           <ButtonControl>
-            <Button name="Save" />
+            <Button name="Save" onClick={props.onSave}/>
           </ButtonControl>
         )}
         <ButtonControl>
-          <Button name="Delete" />
+          <Button name="Delete" onClick={props.onDelete}/>
         </ButtonControl>
       </ButtonContainer>
     </StyledCard>

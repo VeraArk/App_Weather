@@ -1,6 +1,5 @@
 import { useAppDispatch, useAppSelector } from "store/hooks"
 
-// import { EmployeeData } from "pages/EmployeeProjectApp/components/LayoutEmployee/types"
 import { WEATHER_FORM } from "pages/Homepage/types"
 import {
   PageWrapperWheather,
@@ -8,47 +7,46 @@ import {
   ButtonControl,
 } from "./styles"
 import Button from "components/Button/Button"
-// import {
-//   employeeDataSliceAction,
-//   employeeDataSliceSelectors,
-// } from "store/redux/employeeData/employeeDataSlice"
+
 import { ReactNode } from "react"
 import { v4 } from "uuid"
 import Card from "components/Card/Card"
+import { useSelector } from "react-redux"
+import { weatherActions, weatherSelectors } from "store/redux/weatherSlice/weatherSlice"
 
 function Weather() {
   const dispatch = useAppDispatch()
 
-  // const dataFromCreateEmployee = useAppSelector(
-  //   employeeDataSliceSelectors.employees,
-  // )
-  // const onResetEmployee = () => {
-  // dispatch(employeeDataSliceAction.removeAllEmployees())
-  // }
+  const removeAll = () => {
+    dispatch(weatherActions.deleteAllcards())
+  }
 
-  // const employeesCards: ReactNode = dataFromCreateEmployee.map(
-  //   (employeeObj: EmployeeData) => {
-  //     const onDeletCard = () => {
-  //       dispatch(
-  //         employeeDataSliceAction.deleteEmployeeCard(
-  //           employeeObj?.[EMPLOYEE_FORM_NAMES.ID],
-  //         ),
-  //       )
-  //     }
+const weatherCards = useAppSelector(weatherSelectors.allWeather)
+
+const savedCards:ReactNode = weatherCards.map ((weatherCard)=>{
+  const onDelete = () => {
+    dispatch(weatherActions.deleteCardWeather(weatherCard?.id))
+  }
+  return (
+  <Card onDelete={onDelete} showSaveButton={false} city={weatherCard?.city} temperature={weatherCard?.temperature} imgUrl={weatherCard?.imgURL}/>)
+})
+
+
+
 
   return (
     <PageWrapperWheather>
       <WheatherCardContainer>
-      <Card showSaveButton={true} />
+      {savedCards}
       </WheatherCardContainer>
-      <ButtonControl>
+      {weatherCards.length>0 && <ButtonControl>
         <Button
           name="Delete All Cards"
           type="button"
-          onClick={() => {}}
+          onClick={removeAll}
           isBlue
         />
-      </ButtonControl>
+      </ButtonControl>}
     </PageWrapperWheather>
   )
 }
