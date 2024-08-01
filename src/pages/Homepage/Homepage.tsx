@@ -27,8 +27,8 @@ function Homepage() {
   const error = useAppSelector(weatherSelectors.error)
   const isFetching = useAppSelector(weatherSelectors.isFetching)
 
-  const [isModalVisible, setModalVisible] = useState(false)
-  const [modalText, setModalText] = useState("")
+  const [isModalVisible, setModalVisible] = useState<boolean>(false)
+  const [modalText, setModalText] = useState<string>("")
 
   const validationSchema = Yup.object().shape({
     [WEATHER_FORM.CITY]: Yup.string(),

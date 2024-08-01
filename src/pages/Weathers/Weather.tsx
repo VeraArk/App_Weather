@@ -19,8 +19,8 @@ import {
 function Weather() {
   const dispatch = useAppDispatch()
 
-  const [isModalVisible, setModalVisible] = useState(false)
-  const [modalText, setModalText] = useState("")
+  const [isModalVisible, setModalVisible] = useState<boolean>(false)
+  const [modalText, setModalText] = useState<string>("")
 
   const closeModal = () => {
     setModalVisible(false)
