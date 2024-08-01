@@ -9,38 +9,40 @@ export const StyledCard = styled.div`
   border-radius: 15px;
   padding: 28px;
   width: 709px;
-  height: 220px;
+  max-height: 220px;
 `
 
-export const Temp = styled.p`
+export const Temp = styled.div`
+  display: flex;
   font-size: 57px;
   color: #ffffff;
+  /* padding: 10px; */
 `
 
-export const City = styled.p`
+export const City = styled.div`
+  display: flex;
   font-size: 20px;
   color: #ffffff;
+  /* padding: 10px; */
 `
 export const TempCityContainer = styled.div`
-  height: fit-content;
   display: flex;
-  flex: 1;
   flex-direction: column;
 `
 
 export const TempCityImgContainer = styled.div`
   display: flex;
-  flex: 1;
+  justify-content: space-between;
 `
 
 export const ImgControl = styled.div`
-  width: 290px;
-  height: 290px;
+  display: flex;
+  width: 200px;
+  height: 100px;
 `
 
 export const Img = styled.img`
-width: 100%;
-height: 100%;
+  height: 100%;
 `
 
 export const ButtonContainer = styled.div`
@@ -48,8 +50,10 @@ export const ButtonContainer = styled.div`
   align-items: center;
   justify-content: center;
   gap: 95px;
+  padding-top: 20px;
 `
 
 export const ButtonControl = styled.div`
+  display: flex;
   width: 150px;
 `
