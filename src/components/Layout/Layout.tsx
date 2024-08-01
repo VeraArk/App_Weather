@@ -35,7 +35,7 @@ function Layout({ children }: LayoutProps) {
               fontWeight: isActive ? "bold" : "normal",
               textDecoration: isActive ? "underline" : "none",
             })}
-            to="/Weathers"
+            to="/weathers"
           >
             Weathers
           </Link>

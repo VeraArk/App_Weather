@@ -28,11 +28,12 @@ export const weatherSlice = createAppSlice({
           state.isFetching = true
         },
         fulfilled: (state: WeatherDataState, action) => {
+          const response = action.payload.data
           state.isFetching = false
           state.weather = {
-            city: action.payload.data.name,
-            imgURL: `http://openweathermap.org/img/w/${action.payload.data.weather[0].icon}.png`,
-            temperature: `${Math.round(action.payload.data.main.temp - 272.15)}°C`,
+            city: response.name,
+            imgURL: `http://openweathermap.org/img/w/${response.weather[0].icon}.png`,
+            temperature: `${Math.round(response.main.temp - 273.15)}°C`,
             id: v4(),
           }
         },

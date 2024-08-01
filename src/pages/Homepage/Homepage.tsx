@@ -43,11 +43,11 @@ function Homepage() {
     validateOnMount: false,
     validateOnChange: false,
 
-    onSubmit: async (values, helpers) => {
+    onSubmit: (values, helpers) => {
       if (!values[WEATHER_FORM.CITY]) {
         alert("Please enter a city!")
       } else {
-        await dispatch(
+        dispatch(
           weatherActions.getWeather({
             city: values[WEATHER_FORM.CITY],
           }),
@@ -79,7 +79,7 @@ function Homepage() {
   }
   return (
     <HomepageWrapper>
-      {formik.isSubmitting && <Spinner />}
+      {isFetching && <Spinner />}
       <StyledFormContainer onSubmit={formik.handleSubmit}>
         <Input
           id="name-id"

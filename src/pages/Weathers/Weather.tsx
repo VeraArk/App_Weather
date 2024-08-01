@@ -42,6 +42,7 @@ function Weather() {
     }
     return (
       <Card
+        key={weatherCard.id}
         onDelete={onDelete}
         showSaveButton={false}
         city={weatherCard?.city}
