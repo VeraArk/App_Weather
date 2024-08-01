@@ -9,7 +9,7 @@ import ErrorCard from "components/ErrorCard/ErrorCard"
 import Modal from "components/Modal/Modal"
 
 import { WEATHER_FORM } from "./types"
-import { HomepageWrapper, StyledFormContainer, ButtonControl } from "./styles"
+import { HomepageWrapper, StyledFormContainer, ButtonControl,Spinner } from "./styles"
 
 import { useAppDispatch, useAppSelector } from "store/hooks"
 import {
@@ -37,11 +37,16 @@ function Homepage() {
     validateOnMount: false,
     validateOnChange: false,
 
+
     onSubmit: (values, helpers) => {
       if (!values[WEATHER_FORM.CITY]) {
         alert("Please enter a city!")
       }
       dispatch(
+
+    onSubmit: async (values, helpers) => {
+     await  dispatch(
+
         weatherActions.getWeather({
           city: values[WEATHER_FORM.CITY],
         }),
@@ -71,6 +76,7 @@ function Homepage() {
 
   return (
     <HomepageWrapper>
+      {formik.isSubmitting && <Spinner />}
       <StyledFormContainer onSubmit={formik.handleSubmit}>
         <Input
           id="name-id"

@@ -27,6 +27,16 @@ const getButtonBorder = (isBlue: boolean | undefined) => {
   }
 }
 
+const activeButton = ( 
+  isBlue: boolean | undefined,) =>{
+    if (isBlue) {
+      return colors.DARKER_BLUE
+    } else {
+      return "grey"
+    }
+  }
+
+
 export const StyledButton = styled("button")<StyledButtonProps>`
   width: 100%;
   height: 48px;
@@ -42,4 +52,11 @@ export const StyledButton = styled("button")<StyledButtonProps>`
   cursor: ${({ disabled }) => (disabled ? "not-allowed" : "pointer")};
   border-radius: 50px;
   border: ${({ $isBlue }) => getButtonBorder($isBlue)};
+
+
+  &:active {
+    background-color: ${({$isBlue }) =>
+      activeButton($isBlue)};
+  }
+
 `
