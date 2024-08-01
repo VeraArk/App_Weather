@@ -1,21 +1,16 @@
 import Button from "../Button/Button"
-import {
-  ButtonControl,
-  ErrorContainer,
-  Info,
-  StyledCard,
-} from "./styles"
+import { ButtonControl, ErrorContainer, Info, StyledCard } from "./styles"
 
-import {errorCardProps} from "./types"
+import { errorCardProps } from "./types"
 
 function ErrorCard(props: errorCardProps) {
   return (
     <StyledCard>
-     <ErrorContainer>ERROR</ErrorContainer>
-          <Info>{props.errorMessage}</Info>
-        <ButtonControl>
-          <Button name="Delete" />
-        </ButtonControl>
+      <ErrorContainer>ERROR</ErrorContainer>
+      <Info>{props.errorMessage}</Info>
+      <ButtonControl>
+        <Button onClick={props.onDelete} name="Delete" />
+      </ButtonControl>
     </StyledCard>
   )
 }
