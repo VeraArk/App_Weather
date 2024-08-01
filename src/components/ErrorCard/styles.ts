@@ -13,20 +13,26 @@ export const StyledCard = styled.div`
   border-radius: 15px;
   padding: 28px;
   width: 709px;
-  height: 220px;
+  max-height: 220px;
 `
 export const ErrorContainer = styled.div`
+  display: flex;
   width: 241px;
   height: 69;
   color: ${colors.ERROR};
   font-size: 57px;
+  justify-content: center;
+  align-items: center;
 `
 
 export const Info = styled.p`
+  display: flex;
   width: 315px;
   height: 22px;
   font-size: 18px;
   color: #ffffff;
+  justify-content: center;
+  align-items: center;
 `
 
 export const ButtonControl = styled.div`
