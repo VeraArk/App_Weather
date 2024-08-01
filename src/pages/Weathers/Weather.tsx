@@ -1,4 +1,5 @@
 import { useAppDispatch, useAppSelector } from "store/hooks"
+import { useState } from "react"
 
 import { WEATHER_FORM } from "pages/Homepage/types"
 import {
@@ -7,6 +8,7 @@ import {
   ButtonControl,
 } from "./styles"
 import Button from "components/Button/Button"
+import Modal from "components/Modal/Modal"
 
 import { ReactNode } from "react"
 import { v4 } from "uuid"
@@ -17,8 +19,17 @@ import { weatherActions, weatherSelectors } from "store/redux/weatherSlice/weath
 function Weather() {
   const dispatch = useAppDispatch()
 
+  const [isModalVisible, setModalVisible] = useState(false)
+  const [modalText, setModalText] = useState("")
+
+  const closeModal = () => {
+    setModalVisible(false)
+  }
+
   const removeAll = () => {
     dispatch(weatherActions.deleteAllcards())
+    setModalText("The Cards deleted")
+    setModalVisible(true)
   }
 
 const weatherCards = useAppSelector(weatherSelectors.allWeather)
@@ -26,6 +37,8 @@ const weatherCards = useAppSelector(weatherSelectors.allWeather)
 const savedCards:ReactNode = weatherCards.map ((weatherCard)=>{
   const onDelete = () => {
     dispatch(weatherActions.deleteCardWeather(weatherCard?.id))
+    setModalText("The Card deleted")
+    setModalVisible(true)
   }
   return (
   <Card onDelete={onDelete} showSaveButton={false} city={weatherCard?.city} temperature={weatherCard?.temperature} imgUrl={weatherCard?.imgURL}/>)
@@ -47,6 +60,11 @@ const savedCards:ReactNode = weatherCards.map ((weatherCard)=>{
           isBlue
         />
       </ButtonControl>}
+      <Modal
+        isVisible={isModalVisible}
+        onClose={closeModal}
+        text={modalText}
+      ></Modal>
     </PageWrapperWheather>
   )
 }

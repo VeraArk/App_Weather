@@ -2,16 +2,20 @@ import { StyledButton } from "./styles"
 
 import { ButtonProps } from "./types"
 
-
 function Button({
   type = "button",
   name = "Send",
   onClick,
   disabled = false,
-  isBlue = false
+  isBlue = false,
 }: ButtonProps) {
   return (
-    <StyledButton disabled={disabled} onClick={onClick} type={type} $isBlue={isBlue}>
+    <StyledButton
+      disabled={disabled}
+      onClick={onClick}
+      type={type}
+      $isBlue={isBlue}
+    >
       {name}
     </StyledButton>
   )

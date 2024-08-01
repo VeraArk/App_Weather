@@ -36,6 +36,7 @@ const activeButton = (
     }
   }
 
+
 export const StyledButton = styled("button")<StyledButtonProps>`
   width: 100%;
   height: 48px;
@@ -52,8 +53,10 @@ export const StyledButton = styled("button")<StyledButtonProps>`
   border-radius: 50px;
   border: ${({ $isBlue }) => getButtonBorder($isBlue)};
 
+
   &:active {
     background-color: ${({$isBlue }) =>
       activeButton($isBlue)};
   }
+
 `

@@ -1,10 +1,12 @@
 import { useFormik } from "formik"
 import * as Yup from "yup"
+import { useState } from "react"
 
 import Button from "components/Button/Button"
 import Input from "components/Input/Input"
 import Card from "components/Card/Card"
 import ErrorCard from "components/ErrorCard/ErrorCard"
+import Modal from "components/Modal/Modal"
 
 import { WEATHER_FORM } from "./types"
 import { HomepageWrapper, StyledFormContainer, ButtonControl,Spinner } from "./styles"
@@ -19,14 +21,15 @@ import { WeatherData } from "store/redux/weatherSlice/types"
 
 function Homepage() {
   const dispatch = useAppDispatch()
+  const [isModalVisible, setModalVisible] = useState(false)
+  const [modalText, setModalText] = useState("")
 
   const validationSchema = Yup.object().shape({
-    [WEATHER_FORM.CITY]: Yup.string().required("This field is required"),
+    [WEATHER_FORM.CITY]: Yup.string(),
   })
 
   const formik = useFormik({
     initialValues: {
-      // [WEATHER_FORM.ID]: "",
       [WEATHER_FORM.CITY]: "",
     },
     validationSchema: validationSchema,
@@ -34,11 +37,18 @@ function Homepage() {
     validateOnMount: false,
     validateOnChange: false,
 
+
+    onSubmit: (values, helpers) => {
+      if (!values[WEATHER_FORM.CITY]) {
+        alert("Please enter a city!")
+      }
+      dispatch(
+
     onSubmit: async (values, helpers) => {
      await  dispatch(
+
         weatherActions.getWeather({
           city: values[WEATHER_FORM.CITY],
-          // [WEATHER_FORM.ID]: v4(),
         }),
       ),
         helpers.resetForm()
@@ -48,12 +58,20 @@ function Homepage() {
   const weather = useAppSelector(weatherSelectors.weatherData)
   const error = useAppSelector(weatherSelectors.error)
 
+  const closeModal = () => {
+    setModalVisible(false)
+  }
+
   const onSave = () => {
     dispatch(weatherActions.saveCard())
+    setModalText("The card saved")
+    setModalVisible(true)
   }
 
   const onDelete = () => {
     dispatch(weatherActions.deleteCardHomePage())
+    setModalText("The card deleted")
+    setModalVisible(true)
   }
 
   return (
@@ -84,6 +102,11 @@ function Homepage() {
         />
       )}
       {error && <ErrorCard onDelete={onDelete} errorMessage={error} />}
+      <Modal
+        isVisible={isModalVisible}
+        onClose={closeModal}
+        text={modalText}
+      ></Modal>
     </HomepageWrapper>
   )
 }
