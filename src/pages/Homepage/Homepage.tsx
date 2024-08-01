@@ -7,7 +7,7 @@ import Card from "components/Card/Card"
 import ErrorCard from "components/ErrorCard/ErrorCard"
 
 import { WEATHER_FORM } from "./types"
-import { HomepageWrapper, StyledFormContainer, ButtonControl } from "./styles"
+import { HomepageWrapper, StyledFormContainer, ButtonControl,Spinner } from "./styles"
 
 import { useAppDispatch, useAppSelector } from "store/hooks"
 import {
@@ -34,8 +34,8 @@ function Homepage() {
     validateOnMount: false,
     validateOnChange: false,
 
-    onSubmit: (values, helpers) => {
-      dispatch(
+    onSubmit: async (values, helpers) => {
+     await  dispatch(
         weatherActions.getWeather({
           city: values[WEATHER_FORM.CITY],
           // [WEATHER_FORM.ID]: v4(),
@@ -58,6 +58,7 @@ function Homepage() {
 
   return (
     <HomepageWrapper>
+      {formik.isSubmitting && <Spinner />}
       <StyledFormContainer onSubmit={formik.handleSubmit}>
         <Input
           id="name-id"
