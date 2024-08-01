@@ -9,7 +9,12 @@ import ErrorCard from "components/ErrorCard/ErrorCard"
 import Modal from "components/Modal/Modal"
 
 import { WEATHER_FORM } from "./types"
-import { HomepageWrapper, StyledFormContainer, ButtonControl,Spinner } from "./styles"
+import {
+  HomepageWrapper,
+  StyledFormContainer,
+  ButtonControl,
+  Spinner,
+} from "./styles"
 
 import { useAppDispatch, useAppSelector } from "store/hooks"
 import {
@@ -37,16 +42,15 @@ function Homepage() {
     validateOnMount: false,
     validateOnChange: false,
 
+    // onSubmit: (values, helpers) => {
 
-    onSubmit: (values, helpers) => {
+    //   dispatch(
+
+    onSubmit: async (values, helpers) => {
       if (!values[WEATHER_FORM.CITY]) {
         alert("Please enter a city!")
       }
-      dispatch(
-
-    onSubmit: async (values, helpers) => {
-     await  dispatch(
-
+      await dispatch(
         weatherActions.getWeather({
           city: values[WEATHER_FORM.CITY],
         }),
@@ -57,6 +61,7 @@ function Homepage() {
 
   const weather = useAppSelector(weatherSelectors.weatherData)
   const error = useAppSelector(weatherSelectors.error)
+  const isFetching =useAppSelector(weatherSelectors.isFetching)
 
   const closeModal = () => {
     setModalVisible(false)
@@ -70,10 +75,13 @@ function Homepage() {
 
   const onDelete = () => {
     dispatch(weatherActions.deleteCardHomePage())
+  }
+
+  const onDeleteError = () => {
+    dispatch(weatherActions.deleteCardHomePage())
     setModalText("The card deleted")
     setModalVisible(true)
   }
-
   return (
     <HomepageWrapper>
       {formik.isSubmitting && <Spinner />}
@@ -88,7 +96,7 @@ function Homepage() {
           error={formik.errors[WEATHER_FORM.CITY]}
         />
         <ButtonControl>
-          <Button name="Search" type="submit" isBlue />
+          <Button name="Search" type="submit" isBlue disabled={isFetching}/>
         </ButtonControl>
       </StyledFormContainer>
       {!!weather && (
@@ -101,7 +109,7 @@ function Homepage() {
           imgUrl={weather?.imgURL}
         />
       )}
-      {error && <ErrorCard onDelete={onDelete} errorMessage={error} />}
+      {error && <ErrorCard onDelete={onDeleteError} errorMessage={error} />}
       <Modal
         isVisible={isModalVisible}
         onClose={closeModal}
