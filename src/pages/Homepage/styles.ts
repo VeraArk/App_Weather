@@ -24,3 +24,47 @@ export const StyledFormContainer = styled.form`
 export const ButtonControl = styled.div`
   width: 155px;
 `
+export const Spinner = styled.div`
+
+  border: 8px solid rgba(56, 24, 217, 0.1);
+
+  border-left-color: #22c1c3;
+  border-right-color: #22c1c3;
+  width: 50px;
+  height: 50px;
+  border-radius: 50%;
+  animation: spin 2s alternate infinite;
+  position: absolute;
+  top: 42%;
+  left: 50%;
+  opacity: 70%;
+
+
+
+  
+  @keyframes spin {
+    to {
+      transform: rotate(180deg);
+    }
+  }
+`;
+
+// export const Spinner = styled.div`
+
+//   border: 8px solid rgba(56, 24, 217, 0.1);
+//   border-left-color: red;
+//   width: 80px;
+//   height: 80px;
+//   border-radius: 50%;
+//   animation: spin 4s linear infinite;
+//   position: absolute;
+//   top: 30%;
+//   left: 50%;
+  
+  
+//   @keyframes spin {
+//     to {
+//       transform: rotate(180deg)
+//     }
+//   }
+// `;
