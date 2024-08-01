@@ -16,14 +16,12 @@ export const Temp = styled.div`
   display: flex;
   font-size: 57px;
   color: #ffffff;
-  /* padding: 10px; */
 `
 
 export const City = styled.div`
   display: flex;
   font-size: 20px;
   color: #ffffff;
-  /* padding: 10px; */
 `
 export const TempCityContainer = styled.div`
   display: flex;

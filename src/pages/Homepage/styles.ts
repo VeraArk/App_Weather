@@ -1,7 +1,5 @@
 import styled from "@emotion/styled"
 
-import backgroundImage from "assets/backgroundImage.jpg"
-
 export const HomepageWrapper = styled.div`
   min-height: 100%;
   width: 100%;
@@ -25,7 +23,6 @@ export const ButtonControl = styled.div`
   width: 155px;
 `
 export const Spinner = styled.div`
-
   border: 8px solid rgba(56, 24, 217, 0.1);
 
   border-left-color: #22c1c3;
@@ -39,32 +36,9 @@ export const Spinner = styled.div`
   left: 50%;
   opacity: 70%;
 
-
-
-  
   @keyframes spin {
     to {
       transform: rotate(180deg);
     }
   }
-`;
-
-// export const Spinner = styled.div`
-
-//   border: 8px solid rgba(56, 24, 217, 0.1);
-//   border-left-color: red;
-//   width: 80px;
-//   height: 80px;
-//   border-radius: 50%;
-//   animation: spin 4s linear infinite;
-//   position: absolute;
-//   top: 30%;
-//   left: 50%;
-  
-  
-//   @keyframes spin {
-//     to {
-//       transform: rotate(180deg)
-//     }
-//   }
-// `;
+`

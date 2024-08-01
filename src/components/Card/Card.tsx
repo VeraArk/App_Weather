@@ -21,20 +21,17 @@ function Card(props: CardProps) {
           <City>{props.city}</City>
         </TempCityContainer>
         <ImgControl>
-          <Img
-            src={props.imgUrl}
-            alt="Weather image"
-          />
+          <Img src={props.imgUrl} alt="Weather image" />
         </ImgControl>
       </TempCityImgContainer>
       <ButtonContainer>
         {props.showSaveButton && (
           <ButtonControl>
-            <Button name="Save" onClick={props.onSave}/>
+            <Button name="Save" onClick={props.onSave} />
           </ButtonControl>
         )}
         <ButtonControl>
-          <Button name="Delete" onClick={props.onDelete}/>
+          <Button name="Delete" onClick={props.onDelete} />
         </ButtonControl>
       </ButtonContainer>
     </StyledCard>

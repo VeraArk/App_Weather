@@ -27,15 +27,13 @@ const getButtonBorder = (isBlue: boolean | undefined) => {
   }
 }
 
-const activeButton = ( 
-  isBlue: boolean | undefined,) =>{
-    if (isBlue) {
-      return colors.DARKER_BLUE
-    } else {
-      return "grey"
-    }
+const activeButton = (isBlue: boolean | undefined) => {
+  if (isBlue) {
+    return colors.DARKER_BLUE
+  } else {
+    return "grey"
   }
-
+}
 
 export const StyledButton = styled("button")<StyledButtonProps>`
   width: 100%;
@@ -53,10 +51,7 @@ export const StyledButton = styled("button")<StyledButtonProps>`
   border-radius: 50px;
   border: ${({ $isBlue }) => getButtonBorder($isBlue)};
 
-
   &:active {
-    background-color: ${({$isBlue }) =>
-      activeButton($isBlue)};
+    background-color: ${({ $isBlue }) => activeButton($isBlue)};
   }
-
 `

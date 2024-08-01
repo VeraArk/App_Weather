@@ -25,7 +25,7 @@ function Input({
       />
       {!!error && <ErrorContainer>{error}</ErrorContainer>}
     </InputWrapper>
-  );
+  )
 }
 
-export default Input;
+export default Input

@@ -1,4 +1,4 @@
-export interface errorCardProps{
-    errorMessage: string
-    onDelete?: () => void
+export interface errorCardProps {
+  errorMessage: string
+  onDelete?: () => void
 }

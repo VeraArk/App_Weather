@@ -16,7 +16,7 @@ export const StyledModal = styled.div`
   align-items: center;
   background: #fff;
   padding: 20px;
-  margin-top: -400px;
+  margin-top: -200px;
   border-radius: 5px;
 `
 export const StyledText = styled.p`

@@ -7,6 +7,11 @@ import Input from "components/Input/Input"
 import Card from "components/Card/Card"
 import ErrorCard from "components/ErrorCard/ErrorCard"
 import Modal from "components/Modal/Modal"
+import { useAppDispatch, useAppSelector } from "store/hooks"
+import {
+  weatherActions,
+  weatherSelectors,
+} from "store/redux/weatherSlice/weatherSlice"
 
 import { WEATHER_FORM } from "./types"
 import {
@@ -16,16 +21,12 @@ import {
   Spinner,
 } from "./styles"
 
-import { useAppDispatch, useAppSelector } from "store/hooks"
-import {
-  weatherActions,
-  weatherSelectors,
-} from "store/redux/weatherSlice/weatherSlice"
-import { v4 } from "uuid"
-import { WeatherData } from "store/redux/weatherSlice/types"
-
 function Homepage() {
   const dispatch = useAppDispatch()
+  const weather = useAppSelector(weatherSelectors.weatherData)
+  const error = useAppSelector(weatherSelectors.error)
+  const isFetching = useAppSelector(weatherSelectors.isFetching)
+
   const [isModalVisible, setModalVisible] = useState(false)
   const [modalText, setModalText] = useState("")
 
@@ -42,26 +43,20 @@ function Homepage() {
     validateOnMount: false,
     validateOnChange: false,
 
-    // onSubmit: (values, helpers) => {
-
-    //   dispatch(
-
     onSubmit: async (values, helpers) => {
       if (!values[WEATHER_FORM.CITY]) {
         alert("Please enter a city!")
+      } else {
+        await dispatch(
+          weatherActions.getWeather({
+            city: values[WEATHER_FORM.CITY],
+          }),
+        )
       }
-      await dispatch(
-        weatherActions.getWeather({
-          city: values[WEATHER_FORM.CITY],
-        }),
-      ),
-        helpers.resetForm()
+
+      helpers.resetForm()
     },
   })
-
-  const weather = useAppSelector(weatherSelectors.weatherData)
-  const error = useAppSelector(weatherSelectors.error)
-  const isFetching =useAppSelector(weatherSelectors.isFetching)
 
   const closeModal = () => {
     setModalVisible(false)
@@ -79,7 +74,7 @@ function Homepage() {
 
   const onDeleteError = () => {
     dispatch(weatherActions.deleteCardHomePage())
-    setModalText("The card deleted")
+    setModalText("The card removed")
     setModalVisible(true)
   }
   return (
@@ -96,7 +91,7 @@ function Homepage() {
           error={formik.errors[WEATHER_FORM.CITY]}
         />
         <ButtonControl>
-          <Button name="Search" type="submit" isBlue disabled={isFetching}/>
+          <Button name="Search" type="submit" isBlue disabled={isFetching} />
         </ButtonControl>
       </StyledFormContainer>
       {!!weather && (

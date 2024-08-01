@@ -1,8 +1,7 @@
-import styled from "@emotion/styled";
-import { NavLink, Link as SimpleLink } from "react-router-dom";
+import styled from "@emotion/styled"
+import { NavLink } from "react-router-dom"
+
 import backgroundImage from "assets/backgroundImage.jpg"
-
-
 
 export const LayoutWrapper = styled.div`
   display: flex;
@@ -11,7 +10,7 @@ export const LayoutWrapper = styled.div`
   background-image: url(${backgroundImage});
   background-size: cover;
   background-position: center;
-`;
+`
 
 export const Header = styled.header`
   display: flex;
@@ -29,10 +28,10 @@ export const Header = styled.header`
     ),
     linear-gradient(0deg, rgba(255, 255, 255, 0.1), rgba(255, 255, 255, 0.1));
   border-bottom: 1px solid #d2d2d2;
-`;
+`
 
 export const Logo = styled.div`
-    width: 155px;
+  width: 155px;
   height: 29px;
   margin-left: 85px;
   font-family: Inter;
@@ -41,27 +40,23 @@ export const Logo = styled.div`
   line-height: 29.05px;
   color: #ffffff;
   cursor: pointer;
-`;
+`
 
 export const NavigationContainer = styled.nav`
   display: flex;
   gap: 30px;
   margin-right: 85px;
-`;
+`
 
 export const Link = styled(NavLink)`
   font-size: 20px;
   font-weight: 400;
   line-height: 24.2px;
   font: Inter;
-  color: #FFFFFF;
-`;
+  color: #ffffff;
+`
 
 export const Main = styled.main`
   display: flex;
   flex: 1;
-
-`;
-
-
-
+`

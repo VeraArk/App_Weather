@@ -6,7 +6,6 @@ import {
   Link,
   Logo,
   NavigationContainer,
- 
 } from "./styles"
 import { LayoutProps } from "./types"
 
@@ -20,9 +19,7 @@ function Layout({ children }: LayoutProps) {
   return (
     <LayoutWrapper>
       <Header>
-        <Logo onClick= {goHomePage}>
-          Weather App
-        </Logo>
+        <Logo onClick={goHomePage}>Weather app</Logo>
         <NavigationContainer>
           <Link
             style={({ isActive }) => ({
@@ -45,7 +42,6 @@ function Layout({ children }: LayoutProps) {
         </NavigationContainer>
       </Header>
       <Main>{children}</Main>
-    
     </LayoutWrapper>
   )
 }
